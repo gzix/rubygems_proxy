@@ -1,5 +1,5 @@
 GEM
-  remote: http://gems.simplesideias.com.br/
+  remote: http://gems.webzer.net/
   specs:
     rack (1.2.2)
 

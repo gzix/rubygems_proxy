@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
     <head>
         <meta charset="UTF-8">
-        <title>Rubygems Proxy/Mirror by Simples Ideias</title>
+        <title>Webzer Rubygems Proxy</title>
         <style type="text/css">
-            body { background: #B9E1E7; font-size: 130%; color: #033; font-family: sans-serif; }
-            pre { background: #111; color: #fff; padding: 10px; border-radius: 5px; }
-            a { color: #033; }
-            h2 { margin-bottom: 0; }
+            body { background: #fff; font-size: 110%; color: #555; font-family: sans-serif; }
+            pre { background: #333; color: #fff; padding: 10px; border-radius: 5px; }
+            code { font-size: 1.25em; }
+            a { color: #000; font-weight: bold; text-decoration: none; }
+            a:hover { color: #999; }
+            h1,h2 { color: #000; }
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.75em; padding: 25px 0 10px 0; margin: 0; }
             h2 + p { margin-top: 0; }
             #page { width: 600px; margin: 0 auto; padding: 25px; }
             .versions li { display: inline; }
@@ -16,30 +20,37 @@
             .versions { display: inline; margin: 0; padding: 0; opacity: .5; }
             .versions:before { content: "("; }
             .versions:after { content: ")"; }
-            .gems { font-size: 80%; padding-left: 0; }
+            .gems { font-size: 1.25em; padding-left: 22px; }
         </style>
     </head>
 
     <body>
         <div id="page">
-            <h1>Rubygems Proxy/Mirror</h1>
-            <p>Rack app for caching RubyGems files. Very useful in our build server that sometimes fails due to our network or rubygems.org timeout.</p>
+            <h1>Webzer Rubygems Proxy</h1>
+            <p>Rack app เพื่อ cache RubyGems files ไว้ใน server เราเอง แก้ปัญหา <code>rubygems.org timeout</code> (เป็นปัญหา network ที่ทำให้ติดตั้งหรืออัพเดต gems ไม่ได้)</p>
 
-            <h2>Setup your client</h2>
-            <p>Add the following line to your Gemfile:</p>
-            <pre><code>source "<%= server_url %>"</code></pre>
-            <p>And change your <code>~/.gemrc</code> to something like this:</p>
+            <h2>Use this gems proxy?</h2>
+
+            <p>แค่แก้ไฟล์ <code>~/.gemrc</code> ของคุณ เพื่อใช้ <code>gems.webzer.net</code> แทน <code>rubygems.org</code> ประมาณนี้ :</p>
             <pre><code>---
 :sources:
 - <%= server_url %>
-gem: --no-rdoc --no-ri</code></pre>
+gem: --no-rdoc --no-ri</code>
+            </pre>
 
-            <p>
-                Want to implement your own mirror? Get the
-                one-file Rack app at <a href="http://github.com/fnando/rubygems_proxy">Github</a>.
+            <h2>Remotely or Locally?</h2>
+            
+            <p>ถ้าคุณใช้ <a href="https://rvm.beginrescueend.com/">rvm</a> ติดตั้ง ruby หลายเวอร์ชั่น คุณอาจมี gemsets หลายชุดสำหรับใช้งานกับแต่ละโปรเจ็คต์ และต้องติดตั้ง gems ซ้ำๆ ซึ่งมันเปลือง bandwidth โดยใช่เหตุ</p>
+
+            <p><a href="https://github.com/fnando/rubygems_proxy">Rubygems Proxy</a> ช่วยให้เราไม่ต้องดาวน์โหลด gem files ซ้ำๆ เพราะเก็บรวมไว้ได้ที่เดียว ไม่ว่าจะเป็น Remote server หรือ Local server (ซึ่งช่วยให้เราติดตั้ง gems บางตัวได้ แม้ในยามไม่มี internet)</p>
+
+            <h2>Your own gems proxy?</h2>
+
+            <p>ถ้าคุณต้องการสร้างคลัง Rubygems ของตัวเอง โปรดอ่านคำแนะนำที่ <a href="https://github.com/fnando/rubygems_proxy">Github: Rubygems Proxy</a> ต้นแบบอยู่ที่ <a href="http://gems.simplesideias.com.br/">gems.simplesideias.com.br</a> หรือส่งเสียงกระซิบมาที่ <a href="http://webzer.net/contact">webzer.net</a> และ <a href="http://twitter.com/gzix">@gzix</a>
             </p>
 
             <h2>Available gems</h2>
+
             <p>
                 <strong><%= gem_list.size %></strong> gems cached so far!
             </p>
@@ -61,6 +72,5 @@ gem: --no-rdoc --no-ri</code></pre>
             </ul>
         </div>
 
-        <a href="http://github.com/fnando/rubygems_proxy"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://d3nwyuy0nl342s.cloudfront.net/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
     </body>
 </html>
