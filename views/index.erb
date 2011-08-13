@@ -54,9 +54,9 @@ gem: --no-rdoc --no-ri</code>
 
             <h2>Remotely or Locally?</h2>
             
-            <p>ถ้าคุณใช้ <a href="https://rvm.beginrescueend.com/">rvm</a> ติดตั้ง ruby หลายเวอร์ชั่น คุณอาจมี gemsets หลายชุดสำหรับใช้งานกับแต่ละโปรเจ็คต์ <a href="https://github.com/fnando/rubygems_proxy">Rubygems Proxy</a> ช่วยให้เราไม่ต้องดาวน์โหลด gem files ซ้ำๆ เพราะรวมไว้ที่เดียว ใน Local proxy และสามารถติดตั้ง gems บางตัวได้ แม้ไม่มี internet</p>
+            <p>ถ้าคุณใช้ <a href="https://rvm.beginrescueend.com/">rvm</a> ติดตั้ง ruby หลายเวอร์ชั่น คุณอาจมี gemsets หลายชุดสำหรับใช้งานกับแต่ละโปรเจ็คต์ <a href="https://github.com/fnando/rubygems_proxy">Rubygems Proxy</a> ช่วยให้เราไม่ต้องดาวน์โหลด gem files ซ้ำๆ เพราะรวมไว้ที่เดียว ใน Local proxy และสามารถติดตั้ง gems บางตัวได้ แม้ไม่มี internet (แก้ไฟล์ <code>/etc/hosts</code> โดยเพิ่ม <code>127.0.0.1  gems.webzer.net</code>)</p>
             
-            <p>ส่วนเหตุผลที่สร้าง Remote proxy อย่าง gems.webzer.net ไว้ ก็เพื่อ cache gems ไว้ใช้เองใน VPS (มันคือ Local proxy ของ VPS แต่เป็น Remote proxy สำหรับ web) และเผื่อใครเจอปัญหา <code>rubygems.org timeout</code> บ่อยๆ ก็จะได้ใช้ gems.webzer.net เป็น proxy แทน rubygems.org ได้</p>
+            <p>ส่วนเหตุผลที่สร้าง Remote proxy อย่าง gems.webzer.net ไว้ ก็เพื่อ cache gems ไว้ใช้เองใน VPS (มันคือ Local proxy ของ VPS แต่เป็น Remote proxy สำหรับ web) และเผื่อใครเจอปัญหา <code>rubygems.org timeout</code> บ่อยๆ ก็จะได้ใช้ gems.webzer.net เป็น proxy แทน rubygems.org ได้ (ยกเว้นตอนที่ webzer server ล่มนะครับ)</p>
 
             <h2>Your own gems proxy?</h2>
 
