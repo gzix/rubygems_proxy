@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <title>Webzer Rubygems Proxy</title>
         <style type="text/css">
-            body { background: #fff; font-size: 110%; color: #555; font-family: sans-serif; }
+            @import url('http://fonts.googleapis.com/css?family=Ubuntu');
+            body { background: #fff; font-size: 110%; color: #555; font-family: Ubuntu,"Helvetica Neue",Arial,"Liberation Sans",Thonburi, Garuda,sans-serif; }
             pre { background: #333; color: #fff; padding: 10px; border-radius: 5px; }
             code { font-size: 1.25em; }
             a { color: #000; font-weight: bold; text-decoration: none; }
@@ -20,7 +21,7 @@
             .versions { display: inline; margin: 0; padding: 0; opacity: .5; }
             .versions:before { content: "("; }
             .versions:after { content: ")"; }
-            .gems { font-size: 1.25em; padding-left: 22px; }
+            .gems { font-size: 1.25em; padding-left: 23px; }
         </style>
         <script type="text/javascript">
 
@@ -44,7 +45,7 @@
 
             <h2>Use this gems proxy?</h2>
 
-            <p>แค่แก้ไฟล์ <code>~/.gemrc</code> ของคุณ เพื่อใช้ <code>gems.webzer.net</code> แทน <code>rubygems.org</code> ประมาณนี้ :</p>
+            <p>แก้ไขไฟล์ <code>~/.gemrc</code> ของคุณ เพื่อใช้ <code>gems.webzer.net</code> แทน <code>rubygems.org</code> ประมาณนี้ :</p>
             <pre><code>---
 :sources:
 - <%= server_url %>
@@ -53,9 +54,9 @@ gem: --no-rdoc --no-ri</code>
 
             <h2>Remotely or Locally?</h2>
             
-            <p>ถ้าคุณใช้ <a href="https://rvm.beginrescueend.com/">rvm</a> ติดตั้ง ruby หลายเวอร์ชั่น คุณอาจมี gemsets หลายชุดสำหรับใช้งานกับแต่ละโปรเจ็คต์ และต้องติดตั้ง gems ซ้ำๆ ซึ่งมันเปลือง bandwidth โดยใช่เหตุ</p>
-
-            <p><a href="https://github.com/fnando/rubygems_proxy">Rubygems Proxy</a> ช่วยให้เราไม่ต้องดาวน์โหลด gem files ซ้ำๆ เพราะเก็บรวมไว้ได้ที่เดียว ไม่ว่าจะเป็น Remote server หรือ Local server (ซึ่งช่วยให้เราติดตั้ง gems บางตัวได้ แม้ในยามไม่มี internet)</p>
+            <p>ถ้าคุณใช้ <a href="https://rvm.beginrescueend.com/">rvm</a> ติดตั้ง ruby หลายเวอร์ชั่น คุณอาจมี gemsets หลายชุดสำหรับใช้งานกับแต่ละโปรเจ็คต์ <a href="https://github.com/fnando/rubygems_proxy">Rubygems Proxy</a> ช่วยให้เราไม่ต้องดาวน์โหลด gem files ซ้ำๆ เพราะรวมไว้ที่เดียว ใน Local proxy และสามารถติดตั้ง gems บางตัวได้ แม้ไม่มี internet</p>
+            
+            <p>ส่วนเหตุผลที่สร้าง Remote proxy อย่าง gems.webzer.net ไว้ ก็เพื่อ cache gems ไว้ใช้เองใน VPS (มันคือ Local proxy ของ VPS แต่เป็น Remote proxy สำหรับ web) และเผื่อใครเจอปัญหา <code>rubygems.org timeout</code> บ่อยๆ ก็จะได้ใช้ gems.webzer.net เป็น proxy แทน rubygems.org ได้</p>
 
             <h2>Your own gems proxy?</h2>
 
@@ -64,9 +65,10 @@ gem: --no-rdoc --no-ri</code>
 
             <h2>Available gems</h2>
 
-            <p>
-                <strong><%= gem_list.size %></strong> gems cached so far!
-            </p>
+            <p>คุณสามารถติดตั้ง gems ใดๆก็ได้ ผ่าน proxy นี้ โดยไม่ต้องสนใจว่ามันมีในลิสต์ด้านล่างนี้หรือไม่ มันแค่แสดงรายการของ gems ที่ cache ไว้ใน server เท่านั้นเอง</p>
+
+            <p><strong><%= gem_list.size %></strong> gems cached so far!</p>
+            
             <ul class="gems">
                 <% gems = grouped_gems; names = gems.keys.sort %>
                 <% names.each do |name| %>
